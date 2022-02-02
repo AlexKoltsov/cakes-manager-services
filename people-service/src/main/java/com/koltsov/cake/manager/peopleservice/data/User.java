@@ -1,4 +1,4 @@
-package com.koltsov.cakes.manager.cakesservice.data;
+package com.koltsov.cake.manager.peopleservice.data;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -6,19 +6,16 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-//@Entity
-//@Table(name = "users")
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -32,7 +29,7 @@ public class User {
 
     private String lastName;
 
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     private String email;
 

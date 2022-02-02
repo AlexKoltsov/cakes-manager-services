@@ -12,6 +12,7 @@
     <modules>
         <module>service-discovery</module>
         <module>cakes-service</module>
+        <module>people-service</module>
     </modules>
 
     <properties>
