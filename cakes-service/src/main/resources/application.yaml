@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Cakes Service
+    name: cakes-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${DS_URL}:${DS_PORT}/${DS_DB}
