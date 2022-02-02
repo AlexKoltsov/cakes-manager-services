@@ -13,8 +13,8 @@ import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers
 @SpringBootTest
-@ContextConfiguration(initializers = {CakesManagerMonolithApplicationTests.Initializer.class})
-class CakesManagerMonolithApplicationTests {
+@ContextConfiguration(initializers = {CakesServiceApplicationTests.Initializer.class})
+class CakesServiceApplicationTests {
 
     @Container
     private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres"));
