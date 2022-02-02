@@ -1,4 +1,4 @@
-package com.koltsov.cakes.manager.cakesservice.mapper;
+package com.koltsov.cakes.manager.mapper;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.ReportingPolicy;

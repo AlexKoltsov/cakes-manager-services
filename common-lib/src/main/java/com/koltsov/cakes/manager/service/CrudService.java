@@ -1,4 +1,4 @@
-package com.koltsov.cakes.manager.cakesservice.service;
+package com.koltsov.cakes.manager.service;
 
 
 import java.util.List;
