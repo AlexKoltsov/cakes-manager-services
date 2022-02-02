@@ -1,4 +1,4 @@
-package com.koltsov.cakes.manager.cakesservice.exceptions;
+package com.koltsov.cakes.manager.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

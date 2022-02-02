@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>common-lib</module>
         <module>service-discovery</module>
         <module>cakes-service</module>
         <module>people-service</module>

@@ -1,8 +1,9 @@
 package com.koltsov.cakes.manager.cakesservice.service;
 
 import com.koltsov.cakes.manager.cakesservice.data.Cake;
-import com.koltsov.cakes.manager.cakesservice.exceptions.NotFoundException;
+import com.koltsov.cakes.manager.exceptions.NotFoundException;
 import com.koltsov.cakes.manager.cakesservice.repository.CakeRepository;
+import com.koltsov.cakes.manager.service.CrudService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
