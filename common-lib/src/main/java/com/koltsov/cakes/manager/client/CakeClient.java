@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "cakes", url = "http://localhost:8080", path = "/api/v1/cakes")
+@FeignClient(value = "CAKES-SERVICE", path = "/api/v1/cakes")
 public interface CakeClient {
 
     @GetMapping
