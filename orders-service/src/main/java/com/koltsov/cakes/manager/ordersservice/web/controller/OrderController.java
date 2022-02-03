@@ -2,8 +2,8 @@ package com.koltsov.cakes.manager.ordersservice.web.controller;
 
 import com.koltsov.cakes.manager.mapper.GenericMapper;
 import com.koltsov.cakes.manager.ordersservice.data.Order;
-import com.koltsov.cakes.manager.ordersservice.web.dto.OrderCreateDto;
-import com.koltsov.cakes.manager.ordersservice.web.dto.OrderDto;
+import com.koltsov.cakes.manager.web.dto.order.OrderCreateDto;
+import com.koltsov.cakes.manager.web.dto.order.OrderDto;
 import com.koltsov.cakes.manager.service.CrudService;
 import com.koltsov.cakes.manager.web.controller.CrudController;
 import org.springframework.web.bind.annotation.RequestMapping;

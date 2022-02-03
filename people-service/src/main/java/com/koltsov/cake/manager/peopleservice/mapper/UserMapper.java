@@ -1,8 +1,8 @@
 package com.koltsov.cake.manager.peopleservice.mapper;
 
 import com.koltsov.cake.manager.peopleservice.data.User;
-import com.koltsov.cake.manager.peopleservice.web.dto.UserCreateDto;
-import com.koltsov.cake.manager.peopleservice.web.dto.UserDto;
+import com.koltsov.cakes.manager.web.dto.user.UserCreateDto;
+import com.koltsov.cakes.manager.web.dto.user.UserDto;
 import com.koltsov.cakes.manager.mapper.CakeMangerMapperConfig;
 import com.koltsov.cakes.manager.mapper.GenericMapper;
 import org.mapstruct.Mapper;

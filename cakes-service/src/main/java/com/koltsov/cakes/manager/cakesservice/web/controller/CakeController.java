@@ -1,8 +1,8 @@
 package com.koltsov.cakes.manager.cakesservice.web.controller;
 
 import com.koltsov.cakes.manager.cakesservice.data.Cake;
-import com.koltsov.cakes.manager.cakesservice.web.dto.CakeCreateDto;
-import com.koltsov.cakes.manager.cakesservice.web.dto.CakeDto;
+import com.koltsov.cakes.manager.web.dto.cake.CakeCreateDto;
+import com.koltsov.cakes.manager.web.dto.cake.CakeDto;
 import com.koltsov.cakes.manager.mapper.GenericMapper;
 import com.koltsov.cakes.manager.service.CrudService;
 import com.koltsov.cakes.manager.web.controller.CrudController;

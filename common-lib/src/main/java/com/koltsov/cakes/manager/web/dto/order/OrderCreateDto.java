@@ -1,4 +1,4 @@
-package com.koltsov.cakes.manager.ordersservice.web.dto;
+package com.koltsov.cakes.manager.web.dto.order;
 
 import lombok.Data;
 
