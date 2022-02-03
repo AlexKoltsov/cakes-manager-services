@@ -14,6 +14,7 @@
         <module>service-discovery</module>
         <module>cakes-service</module>
         <module>people-service</module>
+        <module>orders-service</module>
     </modules>
 
     <properties>
