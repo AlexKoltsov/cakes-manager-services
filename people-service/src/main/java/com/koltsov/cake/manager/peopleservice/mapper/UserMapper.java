@@ -4,16 +4,13 @@ import com.koltsov.cake.manager.peopleservice.data.User;
 import com.koltsov.cake.manager.peopleservice.web.dto.UserCreateDto;
 import com.koltsov.cake.manager.peopleservice.web.dto.UserDto;
 import com.koltsov.cakes.manager.mapper.CakeMangerMapperConfig;
+import com.koltsov.cakes.manager.mapper.GenericMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(config = CakeMangerMapperConfig.class)
-public interface UserMapper {
-
-    UserDto toDto(User user);
-
-    User toEntity(UserDto userDto);
-
+public interface UserMapper extends GenericMapper<User, UserDto, UserCreateDto> {
     @Mapping(target = "id", ignore = true)
-    User toNewEntity(UserCreateDto userCreateDto);
+    @Override
+    User toNewEntity(UserCreateDto createDto);
 }

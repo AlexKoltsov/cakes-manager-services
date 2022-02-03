@@ -1,5 +1,6 @@
 package com.koltsov.cakes.manager.cakesservice.data;
 
+import com.koltsov.cakes.manager.data.IdAble;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table(name = "cakes")
 @Entity
-public class Cake {
+public class Cake implements IdAble<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cake")
