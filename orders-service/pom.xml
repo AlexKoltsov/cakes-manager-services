@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>orders-service</name>
-    <description>orders-service</description>
+    <description>CRUD service to manage orders data</description>
 
     <properties>
         <testcontainers.version>1.16.3</testcontainers.version>

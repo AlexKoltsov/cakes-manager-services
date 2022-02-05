@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>service-discovery</name>
-    <description>service-discovery</description>
+    <description>Discovery service for register/unregister cakes manager services</description>
 
     <dependencies>
         <dependency>

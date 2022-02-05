@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>people-service</name>
-    <description>people-service</description>
+    <description>CRUD service to manage users data</description>
 
     <properties>
         <testcontainers.version>1.16.3</testcontainers.version>

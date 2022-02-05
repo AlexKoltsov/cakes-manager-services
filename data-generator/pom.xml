@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>data-generator</name>
-    <description>data-generator</description>
+    <description>Data generator service to populate test data to cakes manager services</description>
 
     <dependencies>
         <dependency>

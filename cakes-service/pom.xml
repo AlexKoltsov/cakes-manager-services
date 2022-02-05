@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>cakes-service</name>
-    <description>cakes-service</description>
+    <description>CRUD service to manage cakes data</description>
 
     <properties>
         <testcontainers.version>1.16.3</testcontainers.version>
