@@ -9,6 +9,7 @@ import com.koltsov.cakes.manager.datagenerator.web.dto.GenerateDataResponse;
 import com.koltsov.cakes.manager.web.dto.cake.CakeCreateDto;
 import com.koltsov.cakes.manager.web.dto.cake.CakeDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class CakesDataGenerator implements DataGenerator {
 
     @Override
     public GenerateDataResponse generate(GenerateDataRequest generateDataRequest) {
-        List<String> existentCakes = cakeClient.getAllCakes().stream().map(CakeDto::getName).toList();
+        List<String> existentCakes = cakeClient.getAllCakes(Pageable.unpaged()).stream().map(CakeDto::getName).toList();
         List<String> possibleCakesToCreate = dataGeneratorCakesProperties.getNames().stream()
                 .filter(not(existentCakes::contains))
                 .toList();

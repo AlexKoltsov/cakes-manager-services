@@ -1,3 +1,8 @@
 springdoc:
   swagger-ui:
     operationsSorter: alpha
+
+feign:
+  autoconfiguration:
+    jackson:
+      enabled: true

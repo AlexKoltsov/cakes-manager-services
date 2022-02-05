@@ -3,16 +3,16 @@ package com.koltsov.cakes.manager.client;
 import com.koltsov.cakes.manager.web.dto.user.UserCreateDto;
 import com.koltsov.cakes.manager.web.dto.user.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @FeignClient(value = "PEOPLE-SERVICE", path = "/api/v1/users")
 public interface UserClient {
 
     @GetMapping
-    List<UserDto> getAllUsers();
+    Page<UserDto> getAllUsers(@RequestBody Pageable pageable);
 
     @GetMapping("{userId}")
     UserDto getUserById(@PathVariable("userId") Long userId);

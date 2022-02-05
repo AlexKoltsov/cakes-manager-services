@@ -11,10 +11,13 @@ import com.koltsov.cakes.manager.web.dto.cake.CakeDto;
 import com.koltsov.cakes.manager.web.dto.order.OrderCreateDto;
 import com.koltsov.cakes.manager.web.dto.user.UserDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.koltsov.cakes.manager.datagenerator.utils.CommonUtils.randomElemInList;
 import static com.koltsov.cakes.manager.datagenerator.utils.CommonUtils.randomLocalDateTime;
@@ -31,14 +34,26 @@ public class OrdersDataGenerator implements DataGenerator {
 
     @Override
     public GenerateDataResponse generate(GenerateDataRequest generateDataRequest) {
+        List<Long> cakeIds = cakeClient.getAllCakes(Pageable.unpaged()).stream().map(CakeDto::getId).toList();
+        List<Long> userIds = userClient.getAllUsers(Pageable.unpaged()).stream().map(UserDto::getId).toList();
+
+        List<String> metadata = new ArrayList<>();
         CountStatistic countStatistic = counter.count(() -> {
-            OrderCreateDto orderCreateDto = generateOrder();
-            orderClient.createOrder(orderCreateDto);
+            try {
+                OrderCreateDto orderCreateDto = generateOrder(cakeIds, userIds);
+                orderClient.createOrder(orderCreateDto);
+            } catch (Exception e) {
+                metadata.add(e.getMessage());
+                throw e;
+            }
         }, generateDataRequest.getSize());
 
-        return GenerateDataResponse.builder(countStatistic.getSuccess())
-                .failed(countStatistic.getFailed())
-                .build();
+        GenerateDataResponse.GenerateDataResponseBuilder responseBuilder = GenerateDataResponse.builder(countStatistic.getSuccess())
+                .failed(countStatistic.getFailed());
+        if (!metadata.isEmpty()) {
+            responseBuilder.description(metadata.stream().distinct().collect(Collectors.joining("\n")));
+        }
+        return responseBuilder.build();
     }
 
     @Override
@@ -46,9 +61,10 @@ public class OrdersDataGenerator implements DataGenerator {
         return CakeManagerService.ORDERS_SERVICE;
     }
 
-    private OrderCreateDto generateOrder() {
-        List<Long> cakeIds = cakeClient.getAllCakes().stream().map(CakeDto::getId).toList();
-        List<Long> userIds = userClient.getAllUsers().stream().map(UserDto::getId).toList();
+    private OrderCreateDto generateOrder(List<Long> cakeIds, List<Long> userIds) {
+        if (cakeIds.isEmpty() || userIds.isEmpty()) {
+            throw new IllegalStateException("To create order we need to have at least 1 cake and 1 user");
+        }
         return new OrderCreateDto(
                 randomElemInList(cakeIds),
                 randomElemInList(userIds),
