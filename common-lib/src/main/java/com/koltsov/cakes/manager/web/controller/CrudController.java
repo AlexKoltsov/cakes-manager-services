@@ -3,11 +3,11 @@ package com.koltsov.cakes.manager.web.controller;
 import com.koltsov.cakes.manager.mapper.GenericMapper;
 import com.koltsov.cakes.manager.service.CrudService;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public abstract class CrudController<T, ID, D, CD> {
@@ -16,10 +16,9 @@ public abstract class CrudController<T, ID, D, CD> {
     private final GenericMapper<T, D, CD> mapper;
 
     @GetMapping
-    public List<D> getAll() {
-        return crudService.getAll().stream()
-                .map(mapper::toDto)
-                .collect(Collectors.toList());
+    public Page<D> getPage(@ParameterObject Pageable pageable) {
+        return crudService.getPage(pageable)
+                .map(mapper::toDto);
     }
 
     @GetMapping("{id}")
