@@ -8,6 +8,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 public class CakesServiceApplication {
 
+    // test commit
+
     public static void main(String[] args) {
         SpringApplication.run(CakesServiceApplication.class, args);
     }
