@@ -1,0 +1,16 @@
+ci-cd: .github/**
+
+test:
+  - cakes-service/src/test/**/*.java
+  - common-lib/src/test/**/*.java
+  - data-generator/src/test/**/*.java
+  - orders-service/src/test/**/*.java
+  - people-service/src/test/**/*.java
+  - service-discovery/src/test/**/*.java
+
+common-lib: common-lib/**/*.java
+service-discovery: service-discovery/**/*.java
+cakes-service: cakes-service/**/*.java
+orders-service: orders-service/**/*.java
+people-service: people-service/**/*.java
+data-generator: data-generator/**/*.java
