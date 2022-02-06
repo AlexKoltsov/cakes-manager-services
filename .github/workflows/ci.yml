@@ -23,4 +23,4 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
       - name: Build Docker Image
-        run: mvn -B spring-boot:build-image
+        run: mvn -B -DskipTests spring-boot:build-image
