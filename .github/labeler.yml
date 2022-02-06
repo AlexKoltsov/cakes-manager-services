@@ -1,0 +1,20 @@
+test:
+  - src/test/**/*.java
+
+cakes-service:
+  - cakes-service/**/*.java
+
+common-lib:
+  - common-lib/**/*.java
+
+data-generator:
+  - data-generator/**/*.java
+
+orders-service:
+  - orders-service/**/*.java
+
+people-service:
+  - people-service/**/*.java
+
+service-discovery:
+  - service-discovery/**/*.java
