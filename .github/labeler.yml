@@ -1,3 +1,5 @@
+ci-cd: .github/**
+
 test:
   - cakes-service/src/test/**/*.java
   - common-lib/src/test/**/*.java
