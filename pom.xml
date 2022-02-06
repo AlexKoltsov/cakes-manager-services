@@ -30,6 +30,7 @@
         <springdoc-openapi-ui.version>1.6.5</springdoc-openapi-ui.version>
         <lombok.version>1.18.22</lombok.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -162,6 +163,10 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
