@@ -41,7 +41,9 @@ jobs:
           cache: maven
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
-      - name: Archive artifact
+      - name: Debugging
+        run: ls -ll
+      - name: Upload ${{ inputs.artifact-name }}
         if: ${{ inputs.is-upload-artifact }}
         uses: actions/upload-artifact@v2
         with:
