@@ -13,6 +13,11 @@ on:
         default: 'temurin'
         required: false
         type: string
+      root-folder:
+        description: 'Folder containing pom.xml to build'
+        default: './'
+        required: true
+        type: string
       artifact-name:
         description: 'Artifact name to be built'
         required: true
@@ -27,19 +32,23 @@ jobs:
   build-with-maven:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Code checkout
+        uses: actions/checkout@v2
+
       - name: Set up JDK ${{ inputs.jdk }}
         uses: actions/setup-java@v2
         with:
           java-version: ${{ inputs.jdk }}
           distribution: ${{ inputs.jdk-distribution }}
           cache: maven
+
       - name: Build ${{ inputs.artifact-name }}
-        run: cd ${{ inputs.artifact-name }} && mvn --batch-mode clean package --activate-profiles github
+        run: cd ${{ inputs.root-folder }} && mvn --batch-mode clean package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish ${{ inputs.artifact-name }}
         if: ${{ inputs.publish }}
-        run: cd ${{ inputs.artifact-name }} && mvn --batch-mode deploy --activate-profiles github
+        run: cd ${{ inputs.root-folder }} && mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

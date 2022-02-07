@@ -10,6 +10,7 @@ jobs:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: common-lib
+      root-folder: common-lib
       publish: true
 
   build-cakes-service:
@@ -17,26 +18,31 @@ jobs:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: cakes-service
+      root-folder: cakes-service
 
-  build-orders-service:
-    needs: build-common-lib
-    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-    with:
-      artifact-name: orders-service
-
-  build-people-service:
-    needs: build-common-lib
-    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-    with:
-      artifact-name: people-service
-
-  build-service-discovery:
-    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-    with:
-      artifact-name: service-discovery
-
-  build-data-generator:
-    needs: build-common-lib
-    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-    with:
-      artifact-name: data-generator
+#  build-orders-service:
+#    needs: build-common-lib
+#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+#    with:
+#      artifact-name: orders-service
+#      root-folder: orders-service
+#
+#  build-people-service:
+#    needs: build-common-lib
+#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+#    with:
+#      artifact-name: people-service
+#      root-folder: people-service
+#
+#  build-service-discovery:
+#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+#    with:
+#      artifact-name: service-discovery
+#      root-folder: service-discovery
+#
+#  build-data-generator:
+#    needs: build-common-lib
+#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+#    with:
+#      artifact-name: data-generator
+#      root-folder: data-generator
