@@ -6,12 +6,12 @@ on:
       jdk:
         description: 'JDK to use'
         default: '17'
-        required: false
+        required: true
         type: string
       jdk-distribution:
         description: 'JDK distribution to use'
         default: 'temurin'
-        required: false
+        required: true
         type: string
       root-folder:
         description: 'Folder containing pom.xml to build'
@@ -26,7 +26,12 @@ on:
       publish:
         description: 'Is artifact should be published?'
         default: false
-        required: false
+        required: true
+        type: boolean
+      use-codecov:
+        description: 'Usd code coverage tool?'
+        default: true
+        required: true
         type: boolean
 
 jobs:
@@ -47,6 +52,13 @@ jobs:
         run: cd ${{ inputs.root-folder }} && mvn --batch-mode clean package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Code Coverage
+        if: ${{ inputs.use-codecov }}
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
 
       - name: Publish ${{ inputs.display-name }}
         if: ${{ inputs.publish }}
