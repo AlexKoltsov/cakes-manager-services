@@ -1,4 +1,4 @@
-name: Build cakes service
+name: Build service discovery
 
 on:
   pull_request:

@@ -1,4 +1,4 @@
-name: Build cakes service
+name: Build orders service
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-orders-service:
+    needs: build-common-lib
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: orders-service
