@@ -5,10 +5,13 @@ on:
     paths:
       - 'orders-service/**'
     branches: [ master ]
+  workflow_run:
+    workflows: [ "Build common lib" ]
+    types:
+      - completed
 
 jobs:
   build-orders-service:
-    needs: build-common-lib
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: orders-service
