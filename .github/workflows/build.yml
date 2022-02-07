@@ -18,18 +18,24 @@ jobs:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: cakes-service
+      is-download-artifact: true
+      lib-name: common-lib
 
   build-orders-service:
     needs: build-common-lib
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: orders-service
+      is-download-artifact: true
+      lib-name: common-lib
 
   build-people-service:
     needs: build-common-lib
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: people-service
+      is-download-artifact: true
+      lib-name: common-lib
 
   build-service-discovery:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
@@ -41,3 +47,5 @@ jobs:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: data-generator
+      is-download-artifact: true
+      lib-name: common-lib

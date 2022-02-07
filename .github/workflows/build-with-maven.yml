@@ -22,8 +22,18 @@ on:
         default: 'clean verify'
         required: false
         type: string
+      is-download-artifact:
+        description: 'Is artifact should be downloaded before build'
+        default: false
+        required: false
+        type: boolean
+      lib-name:
+        description: 'Library name used for build'
+        default: 'common-lib'
+        required: false
+        type: string
       is-upload-artifact:
-        description: 'Is artifact should be uploaded'
+        description: 'Is artifact should be uploaded after build'
         default: false
         required: false
         type: boolean
@@ -39,6 +49,11 @@ jobs:
           java-version: ${{ inputs.jdk }}
           distribution: ${{ inputs.jdk-distribution }}
           cache: maven
+      - name: Download ${{ inputs.lib-name }} library
+        if: ${{ inputs.is-download-artifact }}
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ inputs.lib-name }}
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
       - name: Upload ${{ inputs.artifact-name }}
