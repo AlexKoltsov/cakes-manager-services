@@ -17,23 +17,8 @@ on:
         description: 'Artifact name to be built'
         required: true
         type: string
-      mvn-command:
-        description: 'Maven command'
-        default: 'clean verify'
-        required: false
-        type: string
-      is-download-artifact:
-        description: 'Is artifact should be downloaded before build'
-        default: false
-        required: false
-        type: boolean
-      lib-name:
-        description: 'Library name used for build'
-        default: 'common-lib'
-        required: false
-        type: string
-      is-upload-artifact:
-        description: 'Is artifact should be uploaded after build'
+      publish:
+        description: 'Is artifact should be published?'
         default: false
         required: false
         type: boolean
@@ -49,19 +34,10 @@ jobs:
           java-version: ${{ inputs.jdk }}
           distribution: ${{ inputs.jdk-distribution }}
           cache: maven
-      - name: Download ${{ inputs.lib-name }} library
-        if: ${{ inputs.is-download-artifact }}
-        uses: actions/download-artifact@v2
-        with:
-          name: ${{ inputs.lib-name }}
-          path: /home/runner/.m2/repository/com/koltsov/cakes/manager/common-lib/0.0.1-SNAPSHOT/
-      - name: Debugging
-        run: ls -ll /home/runner/.m2/repository/com/koltsov/cakes/manager/common-lib/
       - name: Build ${{ inputs.artifact-name }}
-        run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
-      - name: Upload ${{ inputs.artifact-name }}
-        if: ${{ inputs.is-upload-artifact }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ inputs.artifact-name }}
-          path: ${{ inputs.artifact-name }}/target/${{ inputs.artifact-name }}*.jar
+        run: cd ${{ inputs.artifact-name }} && mvn --batch-mode clean package
+      - name: Publish package
+        if: ${{ inputs.publish }}
+        run: cd ${{ inputs.artifact-name }} && mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
