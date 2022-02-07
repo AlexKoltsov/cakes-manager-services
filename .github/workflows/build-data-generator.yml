@@ -3,12 +3,11 @@ name: Build cakes service
 on:
   pull_request:
     paths:
-      - 'cakes-service/**'
+      - 'data-generator/**'
     branches: [ master ]
-  workflow_dispatch:
 
 jobs:
-  build-cakes-service:
+  build-data-generator:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
-      artifact-name: cakes-service
+      artifact-name: data-generator
