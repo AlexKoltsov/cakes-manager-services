@@ -41,11 +41,9 @@ jobs:
           cache: maven
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
-      - name: Debugging
-        run: ls -ll
       - name: Upload ${{ inputs.artifact-name }}
         if: ${{ inputs.is-upload-artifact }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ inputs.artifact-name }}
-          path: target/${{ inputs.artifact-name }}*.jar
+          path: ${{ inputs.artifact-name }}/target/${{ inputs.artifact-name }}*.jar
