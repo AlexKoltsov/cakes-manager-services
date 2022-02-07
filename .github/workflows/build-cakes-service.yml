@@ -5,6 +5,7 @@ on:
     paths:
       - 'cakes-service/**'
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build-cakes-service:
