@@ -36,7 +36,7 @@ jobs:
           cache: maven
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn --batch-mode clean package
-      - name: Publish package
+      - name: Publish ${{ inputs.artifact-name }}
         if: ${{ inputs.publish }}
         run: cd ${{ inputs.artifact-name }} && mvn --batch-mode deploy
         env:
