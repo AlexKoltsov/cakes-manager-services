@@ -12,6 +12,7 @@ jobs:
     with:
       artifact-name: common-lib
       is-upload-artifact: true
+      mvn-command: clean install
 
   build-cakes-service:
     needs: build-common-lib
