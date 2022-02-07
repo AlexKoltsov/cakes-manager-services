@@ -6,32 +6,31 @@ on:
       jdk:
         description: 'JDK to use'
         default: '17'
-        required: true
+        required: false
         type: string
       jdk-distribution:
         description: 'JDK distribution to use'
         default: 'temurin'
-        required: true
+        required: false
         type: string
       root-folder:
         description: 'Folder containing pom.xml to build'
         default: './'
-        required: true
+        required: false
         type: string
       display-name:
         description: 'Artifact name to be built'
-        default: 'artifact'
         required: true
         type: string
       publish:
         description: 'Is artifact should be published?'
         default: false
-        required: true
+        required: false
         type: boolean
       use-codecov:
         description: 'Usd code coverage tool?'
         default: true
-        required: true
+        required: false
         type: boolean
 
 jobs:
