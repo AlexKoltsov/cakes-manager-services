@@ -54,8 +54,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ${{ inputs.lib-name }}
+          path: /home/runner/.m2/repository/com/koltsov/cakes/manager/common-lib/0.0.1-SNAPSHOT/
       - name: Debugging
-        run: ls -ll
+        run: ls -ll /home/runner/.m2/repository/com/koltsov/cakes/manager/common-lib/
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
       - name: Upload ${{ inputs.artifact-name }}
