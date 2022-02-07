@@ -21,13 +21,13 @@
         <module>data-generator</module>
     </modules>
 
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <name>GitHub Packages</name>-->
-<!--            <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>-->
-<!--        </repository>-->
-<!--    </distributionManagement>-->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
+        </repository>
+    </distributionManagement>
 <!--    <repositories>-->
 <!--        <repository>-->
 <!--            <id>github</id>-->
