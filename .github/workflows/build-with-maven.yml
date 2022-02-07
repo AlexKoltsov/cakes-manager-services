@@ -36,6 +36,8 @@ jobs:
           cache: maven
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn --batch-mode clean package --activate-profiles github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish ${{ inputs.artifact-name }}
         if: ${{ inputs.publish }}
         run: cd ${{ inputs.artifact-name }} && mvn --batch-mode deploy --activate-profiles github

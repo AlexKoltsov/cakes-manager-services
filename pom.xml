@@ -202,19 +202,6 @@
                     <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
                 </repository>
             </distributionManagement>
-            <repositories>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Packages</name>
-                    <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
         </profile>
     </profiles>
 </project>
