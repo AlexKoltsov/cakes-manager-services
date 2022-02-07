@@ -54,6 +54,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ${{ inputs.lib-name }}
+      - name: Debugging
+        run: ls -ll
       - name: Build ${{ inputs.artifact-name }}
         run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
       - name: Upload ${{ inputs.artifact-name }}
