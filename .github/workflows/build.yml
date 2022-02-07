@@ -1,4 +1,4 @@
-name: Build cakes manager services
+name: Build Cakes Manager Services
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ jobs:
   build-common-lib:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
-      artifact-name: common-lib
+      display-name: Common Library
       root-folder: common-lib
       publish: true
 
@@ -17,32 +17,32 @@ jobs:
     needs: build-common-lib
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
-      artifact-name: cakes-service
+      display-name: Cakes Service
       root-folder: cakes-service
 
-#  build-orders-service:
-#    needs: build-common-lib
-#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-#    with:
-#      artifact-name: orders-service
-#      root-folder: orders-service
-#
-#  build-people-service:
-#    needs: build-common-lib
-#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-#    with:
-#      artifact-name: people-service
-#      root-folder: people-service
-#
-#  build-service-discovery:
-#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-#    with:
-#      artifact-name: service-discovery
-#      root-folder: service-discovery
-#
-#  build-data-generator:
-#    needs: build-common-lib
-#    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
-#    with:
-#      artifact-name: data-generator
-#      root-folder: data-generator
+  build-orders-service:
+    needs: build-common-lib
+    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+    with:
+      display-name: Orders Service
+      root-folder: orders-service
+
+  build-people-service:
+    needs: build-common-lib
+    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+    with:
+      display-name: People Service
+      root-folder: people-service
+
+  build-service-discovery:
+    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+    with:
+      display-name: Service Discovery
+      root-folder: service-discovery
+
+  build-data-generator:
+    needs: build-common-lib
+    uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
+    with:
+      display-name: Data Generator
+      root-folder: data-generator

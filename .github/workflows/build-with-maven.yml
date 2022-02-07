@@ -18,8 +18,9 @@ on:
         default: './'
         required: true
         type: string
-      artifact-name:
+      display-name:
         description: 'Artifact name to be built'
+        default: 'artifact'
         required: true
         type: string
       publish:
@@ -42,12 +43,12 @@ jobs:
           distribution: ${{ inputs.jdk-distribution }}
           cache: maven
 
-      - name: Build ${{ inputs.artifact-name }}
+      - name: Build ${{ inputs.display-name }}
         run: cd ${{ inputs.root-folder }} && mvn --batch-mode clean package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish ${{ inputs.artifact-name }}
+      - name: Publish ${{ inputs.display-name }}
         if: ${{ inputs.publish }}
         run: cd ${{ inputs.root-folder }} && mvn --batch-mode deploy
         env:
