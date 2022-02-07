@@ -11,7 +11,7 @@ jobs:
     uses: AlexKoltsov/cakes-manager-services/.github/workflows/build-with-maven.yml@docker-push
     with:
       artifact-name: common-lib
-      mvn-command: clean install
+      is-upload-artifact: true
 
   build-cakes-service:
     needs: build-common-lib
