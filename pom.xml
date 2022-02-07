@@ -34,14 +34,6 @@
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
-        </repository>
-    </distributionManagement>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -200,4 +192,29 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>github</id>
+            <distributionManagement>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub Packages</name>
+                    <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
+                </repository>
+            </distributionManagement>
+            <repositories>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub Packages</name>
+                    <url>https://maven.pkg.github.com/AlexKoltsov/cakes-manager-services</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>
