@@ -17,6 +17,11 @@ on:
         description: 'Artifact name to be built'
         required: true
         type: string
+      mvn-command:
+        description: 'Maven command'
+        default: 'clean verify'
+        required: false
+        type: string
 
 jobs:
   build-with-maven:
@@ -30,4 +35,4 @@ jobs:
           distribution: ${{ inputs.jdk-distribution }}
           cache: maven
       - name: Build ${{ inputs.artifact-name }}
-        run: cd ${{ inputs.artifact-name }} && mvn -B clean verify
+        run: cd ${{ inputs.artifact-name }} && mvn -B ${{ inputs.mvn-command }}
