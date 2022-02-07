@@ -1,0 +1,33 @@
+name: Build artifact with maven
+
+on:
+  workflow_call:
+    inputs:
+      jdk:
+        description: 'JDK to use'
+        default: '17'
+        required: false
+        type: string
+      jdk-distribution:
+        description: 'JDK distribution to use'
+        default: 'temurin'
+        required: false
+        type: string
+      artifact-name:
+        description: 'Artifact name to be built'
+        required: true
+        type: string
+
+jobs:
+  build-with-maven:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK ${{ inputs.jdk }}
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ inputs.jdk }}
+          distribution: ${{ inputs.jdk-distribution }}
+          cache: maven
+      - name: Build ${{ inputs.artifact-name }}
+        run: cd ${{ inputs.artifact-name }} && mvn -B clean verify

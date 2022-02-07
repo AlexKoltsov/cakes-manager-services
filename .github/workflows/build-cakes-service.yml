@@ -1,13 +1,13 @@
-name: Build common lib
+name: Build cakes service
 
 on:
   pull_request:
     paths:
-      - 'common-lib/**'
+      - 'cakes-service/**'
     branches: [ master ]
 
 jobs:
-  build-common-lib:
+  build-cakes-service:
     uses: ./.github/workflows/build-with-maven.yml
     with:
       artifact-name: common-lib
